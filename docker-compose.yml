@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: nexusops
+      POSTGRES_USER: nexusops
+      POSTGRES_PASSWORD: nexusops
+    ports: ["5432:5432"]
+    volumes: [nexusops_pg:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexusops -d nexusops"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  payment-mock:
+    build:
+      context: .
+      dockerfile: mocks/payment-gateway/Dockerfile
+    ports: ["4010:4010"]
+
+  ai-mock:
+    build:
+      context: .
+      dockerfile: mocks/ai-provider/Dockerfile
+    environment:
+      AI_FORCE_FAILURE: ${AI_FORCE_FAILURE:-false}
+    ports: ["4020:4020"]
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://nexusops:nexusops@postgres:5432/nexusops
+      PAYMENT_MOCK_URL: http://payment-mock:4010
+      AI_MOCK_URL: http://ai-mock:4020
+    command: sh -c "pnpm --filter @nexusops/api prisma generate && pnpm --filter @nexusops/api prisma migrate deploy && pnpm --filter @nexusops/api prisma db seed && pnpm --filter @nexusops/api start:prod"
+    ports: ["3001:3001"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      payment-mock: { condition: service_started }
+      ai-mock: { condition: service_started }
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    ports: ["3000:3000"]
+    depends_on: [api]
+
+volumes:
+  nexusops_pg:

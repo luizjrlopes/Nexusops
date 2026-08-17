@@ -1,0 +1,2 @@
+import http from 'node:http'; const seen=new Set();
+http.createServer((req,res)=>{if(req.method!=='POST'||req.url!=='/payments'){res.writeHead(404).end();return}let raw='';req.on('data',c=>raw+=c);req.on('end',()=>{const b=JSON.parse(raw||'{}');const id=b.webhookId??`wh_${b.invoiceId}_${b.result}`;const duplicate=seen.has(id);seen.add(id);res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify({webhookId:id,duplicate,result:b.result??'approved'}))})}).listen(4010,'0.0.0.0');

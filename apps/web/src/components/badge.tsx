@@ -1,0 +1,1 @@
+export function Badge({value}:{value:string}){const cls=value==='PAGO'||value==='ACEITA'||value==='CONVERTIDA'||value==='ATIVO'?'ok':value==='RECUSADO'||value==='ALTA'?'danger':value==='ENVIADA'?'info':value==='RASCUNHO'||value==='ABERTO'?'warn':'';return <span className={`badge ${cls}`}>{value}</span>}

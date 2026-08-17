@@ -1,0 +1,2 @@
+import { Injectable } from '@nestjs/common'; import { PrismaService } from './prisma.service'; import type { Session } from './auth';
+@Injectable() export class AuditWriter{constructor(private db:PrismaService){} async write(s:Session,action:string,entityType:string,entityId:string,details:string){return this.db.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action,entityType,entityId,details}})}}

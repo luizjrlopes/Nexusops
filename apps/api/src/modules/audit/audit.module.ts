@@ -1,0 +1,1 @@
+import { Module } from '@nestjs/common'; import { PrismaService } from '../../common/prisma.service'; import { SessionGuard } from '../../common/auth'; import { AuditController } from './audit.controller'; @Module({controllers:[AuditController],providers:[PrismaService,SessionGuard]}) export class AuditModule{}

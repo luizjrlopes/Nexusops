@@ -1,0 +1,9 @@
+export type Role='ADMIN'|'GESTOR'|'OPERADOR'|'AUDITOR';
+export type Session={userId:string;tenantId:string;tenantName:string;name:string;role:Role};
+export type DemoUser={id:string;name:string;role:Role;tenant:{id:string;name:string}};
+export type Customer={id:string;name:string;email:string;status:string};
+export type Proposal={id:string;customerId:string;title:string;value:string|number;status:'RASCUNHO'|'ENVIADA'|'ACEITA'|'CONVERTIDA';missing:string[];customer:{name:string}};
+export type Contract={id:string;customerId:string;proposalId:string;value:string|number;status:string;customer:{name:string}};
+export type Task={id:string;contractId?:string|null;title:string;owner:string;priority:'BAIXA'|'NORMAL'|'ALTA';due?:string|null;status:string};
+export type Invoice={id:string;contractId:string;value:string|number;status:'ABERTO'|'PAGO'|'RECUSADO'};
+export type AuditEvent={id:string;at:string;userName:string;role:Role;action:string;entityType:string;entityId:string;details:string};

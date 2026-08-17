@@ -1,0 +1,2 @@
+import { test,expect } from '@playwright/test';
+test('fluxo principal do protótipo permanece navegável',async({page})=>{await page.goto('http://localhost:3000/login');await page.getByRole('button',{name:/Ana Martins/}).click();await expect(page.getByRole('heading',{name:'Dashboard'})).toBeVisible();for(const item of ['Clientes','Propostas','Contratos','Tarefas','Cobranças','Auditoria','Usuários','Configurações'])await expect(page.getByRole('link',{name:item})).toBeVisible()});

@@ -1,0 +1,4 @@
+import { Body, Controller, Get, NotFoundException, Post } from '@nestjs/common'; import { JwtService } from '@nestjs/jwt'; import { PrismaService } from '../../common/prisma.service';
+@Controller('auth') export class AuthController{constructor(private db:PrismaService,private jwt:JwtService){}
+@Get('demo-users') async users(){return this.db.user.findMany({where:{active:true},select:{id:true,name:true,role:true,tenant:{select:{id:true,name:true}}},orderBy:{id:'asc'}})}
+@Post('demo-login') async login(@Body() body:{userId:string}){const u=await this.db.user.findUnique({where:{id:body.userId},include:{tenant:true}}); if(!u) throw new NotFoundException('Usuário inexistente'); const session={userId:u.id,tenantId:u.tenantId,name:u.name,role:u.role}; return {token:this.jwt.sign(session),session:{...session,tenantName:u.tenant.name}}}}

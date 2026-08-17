@@ -1,0 +1,1 @@
+import { Module } from '@nestjs/common'; import { PrismaService } from '../../common/prisma.service'; import { SessionGuard } from '../../common/auth'; import { AuditWriter } from '../../common/audit.service'; import { TasksController } from './tasks.controller'; @Module({controllers:[TasksController],providers:[PrismaService,AuditWriter,SessionGuard]}) export class TasksModule{}
