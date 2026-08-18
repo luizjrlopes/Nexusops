@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+env:
+  DATABASE_URL: postgresql://nexusops:nexusops@localhost:5432/nexusops
+  JWT_SECRET: nexusops-ci-secret
+  NEXT_PUBLIC_API_URL: http://localhost:3001
+
 jobs:
   diagnose:
     runs-on: ubuntu-latest
@@ -22,9 +27,13 @@ jobs:
         run: |
           set +e
           {
-            echo '## pnpm install --frozen-lockfile'
-            pnpm install --frozen-lockfile
+            echo '## pnpm install --no-frozen-lockfile'
+            pnpm install --no-frozen-lockfile
             echo "EXIT_INSTALL=$?"
+            echo
+            echo '## pnpm validate:static'
+            pnpm validate:static
+            echo "EXIT_STATIC=$?"
             echo
             echo '## pnpm lint'
             pnpm lint
@@ -39,10 +48,14 @@ jobs:
             echo "EXIT_BUILD=$?"
           } > ci-diagnostics.txt 2>&1
           cat ci-diagnostics.txt
-      - name: Commit diagnostics
+      - name: Commit lockfile and diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ci-diagnostics.txt
-          git commit -m "ci: capture pipeline diagnostics"
+          git add pnpm-lock.yaml ci-diagnostics.txt
+          if git diff --cached --quiet; then
+            echo "No diagnostics changes to commit."
+            exit 0
+          fi
+          git commit -m "ci: refresh lockfile and pipeline diagnostics"
           git push
