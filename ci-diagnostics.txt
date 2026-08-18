@@ -1,0 +1,410 @@
+## pnpm install --frozen-lockfile
+! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-10.15.0.tgz
+Scope: all 6 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +412
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 412, reused 0, downloaded 75, added 31
+Progress: resolved 412, reused 0, downloaded 199, added 100
+Progress: resolved 412, reused 0, downloaded 409, added 409
+Progress: resolved 412, reused 0, downloaded 410, added 409
+Progress: resolved 412, reused 0, downloaded 412, added 412, done
+
+devDependencies:
++ @playwright/test 1.62.1
++ typescript 5.9.3
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: @prisma/client, @prisma/engines, esbuild, prisma,   │
+│   sharp.                                                                     │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+apps/api postinstall$ prisma generate
+apps/api postinstall: Prisma schema loaded from prisma/schema.prisma
+apps/api postinstall: Error: Prisma schema validation - (get-config wasm)
+apps/api postinstall: Error code: P1012
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:2
+apps/api postinstall:    | 
+apps/api postinstall:  1 | generator client { provider = "prisma-client-js" }
+apps/api postinstall:  2 | datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+apps/api postinstall:  3 | 
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:4
+apps/api postinstall:    | 
+apps/api postinstall:  3 | 
+apps/api postinstall:  4 | enum Role { ADMIN GESTOR OPERADOR AUDITOR }
+apps/api postinstall:  5 | enum ProposalStatus { RASCUNHO ENVIADA ACEITA CONVERTIDA }
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:5
+apps/api postinstall:    | 
+apps/api postinstall:  4 | enum Role { ADMIN GESTOR OPERADOR AUDITOR }
+apps/api postinstall:  5 | enum ProposalStatus { RASCUNHO ENVIADA ACEITA CONVERTIDA }
+apps/api postinstall:  6 | enum InvoiceStatus { ABERTO PAGO RECUSADO }
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:6
+apps/api postinstall:    | 
+apps/api postinstall:  5 | enum ProposalStatus { RASCUNHO ENVIADA ACEITA CONVERTIDA }
+apps/api postinstall:  6 | enum InvoiceStatus { ABERTO PAGO RECUSADO }
+apps/api postinstall:  7 | enum TaskStatus { ABERTA EM_ANDAMENTO CONCLUIDA }
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:7
+apps/api postinstall:    | 
+apps/api postinstall:  6 | enum InvoiceStatus { ABERTO PAGO RECUSADO }
+apps/api postinstall:  7 | enum TaskStatus { ABERTA EM_ANDAMENTO CONCLUIDA }
+apps/api postinstall:  8 | enum Priority { BAIXA NORMAL ALTA }
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:8
+apps/api postinstall:    | 
+apps/api postinstall:  7 | enum TaskStatus { ABERTA EM_ANDAMENTO CONCLUIDA }
+apps/api postinstall:  8 | enum Priority { BAIXA NORMAL ALTA }
+apps/api postinstall:  9 | 
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:10
+apps/api postinstall:    | 
+apps/api postinstall:  9 | 
+apps/api postinstall: 10 | model Tenant {
+apps/api postinstall: 11 |   id String @id
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:11
+apps/api postinstall:    | 
+apps/api postinstall: 10 | model Tenant {
+apps/api postinstall: 11 |   id String @id
+apps/api postinstall: 12 |   name String
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:12
+apps/api postinstall:    | 
+apps/api postinstall: 11 |   id String @id
+apps/api postinstall: 12 |   name String
+apps/api postinstall: 13 |   users User[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:13
+apps/api postinstall:    | 
+apps/api postinstall: 12 |   name String
+apps/api postinstall: 13 |   users User[]
+apps/api postinstall: 14 |   customers Customer[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:14
+apps/api postinstall:    | 
+apps/api postinstall: 13 |   users User[]
+apps/api postinstall: 14 |   customers Customer[]
+apps/api postinstall: 15 |   proposals Proposal[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:15
+apps/api postinstall:    | 
+apps/api postinstall: 14 |   customers Customer[]
+apps/api postinstall: 15 |   proposals Proposal[]
+apps/api postinstall: 16 |   contracts Contract[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:16
+apps/api postinstall:    | 
+apps/api postinstall: 15 |   proposals Proposal[]
+apps/api postinstall: 16 |   contracts Contract[]
+apps/api postinstall: 17 |   tasks Task[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:17
+apps/api postinstall:    | 
+apps/api postinstall: 16 |   contracts Contract[]
+apps/api postinstall: 17 |   tasks Task[]
+apps/api postinstall: 18 |   invoices Invoice[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:18
+apps/api postinstall:    | 
+apps/api postinstall: 17 |   tasks Task[]
+apps/api postinstall: 18 |   invoices Invoice[]
+apps/api postinstall: 19 |   auditEvents AuditEvent[]
+apps/api postinstall:    | 
+apps/api postinstall: error: Error validating: This line is not a valid definition within a generator.
+apps/api postinstall:   -->  prisma/schema.prisma:19
+apps/api postinstall:    | 
+apps/api postinstall: 18 |   invoices Invoice[]
+apps/api postinstall: 19 |   auditEvents AuditEvent[]
+apps/api postinstall: 20 | }
+apps/api postinstall:    | 
+apps/api postinstall: error: Argument "provider" is missing in generator block "client".
+apps/api postinstall:   -->  prisma/schema.prisma:1
+apps/api postinstall:    | 
+apps/api postinstall:    | 
+apps/api postinstall:  1 | generator client { provider = "prisma-client-js" }
+apps/api postinstall:  2 | datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+apps/api postinstall:  3 | 
+apps/api postinstall:  4 | enum Role { ADMIN GESTOR OPERADOR AUDITOR }
+apps/api postinstall:  5 | enum ProposalStatus { RASCUNHO ENVIADA ACEITA CONVERTIDA }
+apps/api postinstall:  6 | enum InvoiceStatus { ABERTO PAGO RECUSADO }
+apps/api postinstall:  7 | enum TaskStatus { ABERTA EM_ANDAMENTO CONCLUIDA }
+apps/api postinstall:  8 | enum Priority { BAIXA NORMAL ALTA }
+apps/api postinstall:  9 | 
+apps/api postinstall: 10 | model Tenant {
+apps/api postinstall: 11 |   id String @id
+apps/api postinstall: 12 |   name String
+apps/api postinstall: 13 |   users User[]
+apps/api postinstall: 14 |   customers Customer[]
+apps/api postinstall: 15 |   proposals Proposal[]
+apps/api postinstall: 16 |   contracts Contract[]
+apps/api postinstall: 17 |   tasks Task[]
+apps/api postinstall: 18 |   invoices Invoice[]
+apps/api postinstall: 19 |   auditEvents AuditEvent[]
+apps/api postinstall: 20 | }
+apps/api postinstall:    | 
+apps/api postinstall: Validation Error Count: 17
+apps/api postinstall: [Context: getConfig]
+apps/api postinstall: Prisma CLI Version : 6.19.3
+apps/api postinstall: Failed
+ ELIFECYCLE  Command failed with exit code 1.
+EXIT_INSTALL=1
+
+## pnpm lint
+
+> nexusops@1.0.0 lint /home/runner/work/Nexusops/Nexusops
+> pnpm -r lint
+
+Scope: 5 of 6 workspace projects
+apps/api lint$ eslint src test
+apps/web lint$ eslint .
+apps/web lint: Oops! Something went wrong! :(
+apps/web lint: ESLint: 9.39.5
+apps/web lint: ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+apps/web lint: From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+apps/web lint: If you are using a .eslintrc.* file, please follow the migration guide
+apps/web lint: to update your configuration file to the new format:
+apps/web lint: https://eslint.org/docs/latest/use/configure/migration-guide
+apps/web lint: If you still have problems after following the migration guide, please stop by
+apps/web lint: https://eslint.org/chat/help to chat with the team.
+apps/api lint: Oops! Something went wrong! :(
+apps/api lint: ESLint: 9.39.5
+apps/api lint: ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+apps/api lint: From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+apps/api lint: If you are using a .eslintrc.* file, please follow the migration guide
+apps/api lint: to update your configuration file to the new format:
+apps/api lint: https://eslint.org/docs/latest/use/configure/migration-guide
+apps/api lint: If you still have problems after following the migration guide, please stop by
+apps/api lint: https://eslint.org/chat/help to chat with the team.
+apps/web lint: Failed
+/home/runner/work/Nexusops/Nexusops/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @nexusops/web@1.0.0 lint: `eslint .`
+Exit status 2
+apps/api lint: Failed
+ ELIFECYCLE  Command failed with exit code 2.
+EXIT_LINT=2
+
+## pnpm test
+
+> nexusops@1.0.0 test /home/runner/work/Nexusops/Nexusops
+> pnpm -r test
+
+Scope: 5 of 6 workspace projects
+apps/api test$ vitest run
+apps/web test$ vitest run
+apps/api test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/Nexusops/Nexusops/apps/api[39m
+apps/web test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/Nexusops/Nexusops/apps/web[39m
+apps/web test: [31mNo test files found, exiting with code 1
+apps/web test: [39m
+apps/web test: [2minclude: [22m[33m**/*.{test,spec}.?(c|m)[jt]s?(x)[39m
+apps/web test: [2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/dist/**[2m, [22m**/cypress/**[2m, [22m**/.{idea,git,cache,output,temp}/**[2m, [22m**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*[39m
+apps/web test: Failed
+/home/runner/work/Nexusops/Nexusops/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @nexusops/web@1.0.0 test: `vitest run`
+Exit status 1
+ ELIFECYCLE  Test failed. See above for more details.
+EXIT_TEST=1
+
+## pnpm build
+
+> nexusops@1.0.0 build /home/runner/work/Nexusops/Nexusops
+> pnpm -r build
+
+Scope: 5 of 6 workspace projects
+apps/api build$ nest build
+apps/web build$ next build
+apps/web build: ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+apps/web build: Attention: Next.js now collects completely anonymous telemetry regarding usage.
+apps/web build: This information is used to shape Next.js' roadmap and prioritize features.
+apps/web build: You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+apps/web build: https://nextjs.org/telemetry
+apps/web build:    ▲ Next.js 15.5.23
+apps/web build:    Creating an optimized production build ...
+apps/api build: [96mprisma/seed.ts[0m:[93m1[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'PrismaClient'.
+apps/api build: [7m1[0m import { PrismaClient, Role, ProposalStatus, Priority, TaskStatus } from '@prisma/client';
+apps/api build: [7m [0m [91m         ~~~~~~~~~~~~[0m
+apps/api build: [96mprisma/seed.ts[0m:[93m1[0m:[93m24[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Role'.
+apps/api build: [7m1[0m import { PrismaClient, Role, ProposalStatus, Priority, TaskStatus } from '@prisma/client';
+apps/api build: [7m [0m [91m                       ~~~~[0m
+apps/api build: [96mprisma/seed.ts[0m:[93m1[0m:[93m30[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'ProposalStatus'.
+apps/api build: [7m1[0m import { PrismaClient, Role, ProposalStatus, Priority, TaskStatus } from '@prisma/client';
+apps/api build: [7m [0m [91m                             ~~~~~~~~~~~~~~[0m
+apps/api build: [96mprisma/seed.ts[0m:[93m1[0m:[93m46[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Priority'.
+apps/api build: [7m1[0m import { PrismaClient, Role, ProposalStatus, Priority, TaskStatus } from '@prisma/client';
+apps/api build: [7m [0m [91m                                             ~~~~~~~~[0m
+apps/api build: [96mprisma/seed.ts[0m:[93m1[0m:[93m56[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'TaskStatus'.
+apps/api build: [7m1[0m import { PrismaClient, Role, ProposalStatus, Priority, TaskStatus } from '@prisma/client';
+apps/api build: [7m [0m [91m                                                       ~~~~~~~~~~[0m
+apps/api build: [96msrc/common/audit.service.ts[0m:[93m2[0m:[93m181[0m - [91merror[0m[90m TS2339: [0mProperty 'auditEvent' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @Injectable() export class AuditWriter{constructor(private db:PrismaService){} async write(s:Session,action:string,entityType:string,entityId:string,details:string){return this.db.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action,entityType,entityId,details}})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                    ~~~~~~~~~~[0m
+apps/api build: [96msrc/common/auth.ts[0m:[93m3[0m:[93m15[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Role'.
+apps/api build: [7m3[0m import type { Role } from '@prisma/client';
+apps/api build: [7m [0m [91m              ~~~~[0m
+apps/api build: [96msrc/common/prisma.service.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'PrismaClient'.
+apps/api build: [7m2[0m import { PrismaClient } from '@prisma/client';
+apps/api build: [7m [0m [91m         ~~~~~~~~~~~~[0m
+apps/api build: [96msrc/common/prisma.service.ts[0m:[93m3[0m:[93m135[0m - [91merror[0m[90m TS2339: [0mProperty '$connect' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Injectable() export class PrismaService extends PrismaClient implements OnModuleInit,OnModuleDestroy{async onModuleInit(){await this.$connect()} async onModuleDestroy(){await this.$disconnect()}}
+apps/api build: [7m [0m [91m                                                                                                                                      ~~~~~~~~[0m
+apps/api build: [96msrc/common/prisma.service.ts[0m:[93m3[0m:[93m182[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Injectable() export class PrismaService extends PrismaClient implements OnModuleInit,OnModuleDestroy{async onModuleInit(){await this.$connect()} async onModuleDestroy(){await this.$disconnect()}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                     ~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/ai/ai.controller.ts[0m:[93m2[0m:[93m701[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('ai') export class AiController{constructor(private db:PrismaService,private audit:AuditWriter){} @Post('failure-mode') async failure(@CurrentSession() s:Session,@Body() body:{enabled:boolean}){const r=await fetch(`${process.env.AI_MOCK_URL??'http://localhost:4020'}/mode`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({enabled:body.enabled})}); if(!r.ok) throw new Error('Não foi possível alterar o mock de IA'); await this.audit.write(s,'AI_FAILURE_MODE_CHANGED','SYSTEM','AI',String(body.enabled)); return r.json()} @Post('proposal/:id') async proposal(@CurrentSession() s:Session,@Param('id') id:string){const p=await this.db.proposal.findFirst({where:{id,tenantId:s.tenantId},include:{customer:true}}); if(!p) throw new Error('Proposta inexistente'); try{const r=await fetch(`${process.env.AI_MOCK_URL??'http://localhost:4020'}/analyze`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({customer:p.customer.name,title:p.title,value:Number(p.value),missing:p.missing})}); if(!r.ok) throw new Error('provider unavailable'); const data=await r.json(); await this.audit.write(s,'AI_MOCK_EXECUTED','PROPOSAL',p.id,'Resumo, campos ausentes e classificação'); return {...data,source:'mock-provider'}}catch{const data={summary:`${p.customer.name} · ${p.title}`,missing:p.missing,classification:Number(p.value)>15000?'ALTA PRIORIDADE':'PRIORIDADE NORMAL'}; await this.audit.write(s,'AI_FALLBACK_USED','PROPOSAL',p.id,'Fallback determinístico executado'); return {...data,source:'deterministic-fallback'}}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ~~~~~~~~[0m
+apps/api build: [96msrc/modules/audit/audit.controller.ts[0m:[93m1[0m:[93m418[0m - [91merror[0m[90m TS2339: [0mProperty 'auditEvent' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('audit') export class AuditController{constructor(private db:PrismaService){} @Get() list(@CurrentSession() s:Session){requirePermission(s,'audit'); return this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'}})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                 ~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/auth/auth.controller.ts[0m:[93m3[0m:[93m49[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Get('demo-users') async users(){return this.db.user.findMany({where:{active:true},select:{id:true,name:true,role:true,tenant:{select:{id:true,name:true}}},orderBy:{id:'asc'}})}
+apps/api build: [7m [0m [91m                                                ~~~~[0m
+apps/api build: [96msrc/modules/auth/auth.controller.ts[0m:[93m4[0m:[93m85[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+apps/api build: [7m4[0m @Post('demo-login') async login(@Body() body:{userId:string}){const u=await this.db.user.findUnique({where:{id:body.userId},include:{tenant:true}}); if(!u) throw new NotFoundException('Usuário inexistente'); const session={userId:u.id,tenantId:u.tenantId,name:u.name,role:u.role}; return {token:this.jwt.sign(session),session:{...session,tenantName:u.tenant.name}}}}
+apps/api build: [7m [0m [91m                                                                                    ~~~~[0m
+apps/api build: [96msrc/modules/contracts/contracts.controller.ts[0m:[93m1[0m:[93m105[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'ProposalStatus'.
+apps/api build: [7m1[0m import { BadRequestException, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'; import { ProposalStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; import { AuditWriter } from '../../common/audit.service';
+apps/api build: [7m [0m [91m                                                                                                        ~~~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/contracts/contracts.controller.ts[0m:[93m2[0m:[93m206[0m - [91merror[0m[90m TS2339: [0mProperty 'contract' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('contracts') export class ContractsController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.contract.findMany({where:{tenantId:s.tenantId},include:{customer:true,proposal:true},orderBy:{createdAt:'desc'}})} @Post('from-proposal/:proposalId') async convert(@CurrentSession() s:Session,@Param('proposalId') proposalId:string){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id:proposalId,tenantId:s.tenantId}}); if(!p||p.status!==ProposalStatus.ACEITA) throw new BadRequestException('A proposta precisa estar ACEITA'); return this.db.$transaction(async tx=>{const c=await tx.contract.create({data:{id:`CTR-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:p.customerId,proposalId:p.id,value:p.value,status:'ATIVO'}}); await tx.proposal.update({where:{id:p.id},data:{status:ProposalStatus.CONVERTIDA}}); await tx.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action:'CONTRACT_CREATED',entityType:'CONTRACT',entityId:c.id,details:`Gerado da proposta ${p.id}`}}); return c})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                             ~~~~~~~~[0m
+apps/api build: [96msrc/modules/contracts/contracts.controller.ts[0m:[93m2[0m:[93m490[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('contracts') export class ContractsController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.contract.findMany({where:{tenantId:s.tenantId},include:{customer:true,proposal:true},orderBy:{createdAt:'desc'}})} @Post('from-proposal/:proposalId') async convert(@CurrentSession() s:Session,@Param('proposalId') proposalId:string){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id:proposalId,tenantId:s.tenantId}}); if(!p||p.status!==ProposalStatus.ACEITA) throw new BadRequestException('A proposta precisa estar ACEITA'); return this.db.$transaction(async tx=>{const c=await tx.contract.create({data:{id:`CTR-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:p.customerId,proposalId:p.id,value:p.value,status:'ATIVO'}}); await tx.proposal.update({where:{id:p.id},data:{status:ProposalStatus.CONVERTIDA}}); await tx.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action:'CONTRACT_CREATED',entityType:'CONTRACT',entityId:c.id,details:`Gerado da proposta ${p.id}`}}); return c})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ~~~~~~~~[0m
+apps/api build: [96msrc/modules/contracts/contracts.controller.ts[0m:[93m2[0m:[93m677[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('contracts') export class ContractsController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.contract.findMany({where:{tenantId:s.tenantId},include:{customer:true,proposal:true},orderBy:{createdAt:'desc'}})} @Post('from-proposal/:proposalId') async convert(@CurrentSession() s:Session,@Param('proposalId') proposalId:string){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id:proposalId,tenantId:s.tenantId}}); if(!p||p.status!==ProposalStatus.ACEITA) throw new BadRequestException('A proposta precisa estar ACEITA'); return this.db.$transaction(async tx=>{const c=await tx.contract.create({data:{id:`CTR-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:p.customerId,proposalId:p.id,value:p.value,status:'ATIVO'}}); await tx.proposal.update({where:{id:p.id},data:{status:ProposalStatus.CONVERTIDA}}); await tx.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action:'CONTRACT_CREATED',entityType:'CONTRACT',entityId:c.id,details:`Gerado da proposta ${p.id}`}}); return c})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/contracts/contracts.controller.ts[0m:[93m2[0m:[93m696[0m - [91merror[0m[90m TS7006: [0mParameter 'tx' implicitly has an 'any' type.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('contracts') export class ContractsController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.contract.findMany({where:{tenantId:s.tenantId},include:{customer:true,proposal:true},orderBy:{createdAt:'desc'}})} @Post('from-proposal/:proposalId') async convert(@CurrentSession() s:Session,@Param('proposalId') proposalId:string){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id:proposalId,tenantId:s.tenantId}}); if(!p||p.status!==ProposalStatus.ACEITA) throw new BadRequestException('A proposta precisa estar ACEITA'); return this.db.$transaction(async tx=>{const c=await tx.contract.create({data:{id:`CTR-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:p.customerId,proposalId:p.id,value:p.value,status:'ATIVO'}}); await tx.proposal.update({where:{id:p.id},data:{status:ProposalStatus.CONVERTIDA}}); await tx.auditEvent.create({data:{id:`AUD-${crypto.randomUUID().slice(0,8)}`,tenantId:s.tenantId,userName:s.name,role:s.role,action:'CONTRACT_CREATED',entityType:'CONTRACT',entityId:c.id,details:`Gerado da proposta ${p.id}`}}); return c})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ~~[0m
+apps/api build: [96msrc/modules/customers/customers.controller.ts[0m:[93m2[0m:[93m206[0m - [91merror[0m[90m TS2339: [0mProperty 'customer' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('customers') export class CustomersController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.customer.findMany({where:{tenantId:s.tenantId},orderBy:{name:'asc'}})} @Post() async create(@CurrentSession() s:Session,@Body() b:{name:string;email:string}){requirePermission(s,'write'); const c=await this.db.customer.create({data:{id:`C-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,name:b.name,email:b.email,status:'ATIVO'}}); await this.audit.write(s,'CUSTOMER_CREATED','CUSTOMER',c.id,c.name); return c}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                             ~~~~~~~~[0m
+apps/api build: [96msrc/modules/customers/customers.controller.ts[0m:[93m2[0m:[93m416[0m - [91merror[0m[90m TS2339: [0mProperty 'customer' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('customers') export class CustomersController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.customer.findMany({where:{tenantId:s.tenantId},orderBy:{name:'asc'}})} @Post() async create(@CurrentSession() s:Session,@Body() b:{name:string;email:string}){requirePermission(s,'write'); const c=await this.db.customer.create({data:{id:`C-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,name:b.name,email:b.email,status:'ATIVO'}}); await this.audit.write(s,'CUSTOMER_CREATED','CUSTOMER',c.id,c.name); return c}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                               ~~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m448[0m - [91merror[0m[90m TS2339: [0mProperty 'customer' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                               ~~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m502[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ~~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m559[0m - [91merror[0m[90m TS2339: [0mProperty 'contract' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m613[0m - [91merror[0m[90m TS2339: [0mProperty 'invoice' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m666[0m - [91merror[0m[90m TS2339: [0mProperty 'auditEvent' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m792[0m - [91merror[0m[90m TS7006: [0mParameter 'a' implicitly has an 'any' type.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ~[0m
+apps/api build: [96msrc/modules/dashboard/dashboard.controller.ts[0m:[93m1[0m:[93m794[0m - [91merror[0m[90m TS7006: [0mParameter 'p' implicitly has an 'any' type.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('dashboard') export class DashboardController{constructor(private db:PrismaService){} @Get() async data(@CurrentSession() s:Session){const [customers,proposals,contracts,invoices,audit]=await Promise.all([this.db.customer.count({where:{tenantId:s.tenantId}}),this.db.proposal.findMany({where:{tenantId:s.tenantId}}),this.db.contract.count({where:{tenantId:s.tenantId}}),this.db.invoice.count({where:{tenantId:s.tenantId}}),this.db.auditEvent.findMany({where:{tenantId:s.tenantId},orderBy:{at:'desc'},take:6})]); return {customers,pipeline:proposals.reduce((a,p)=>a+Number(p.value),0),contracts,invoices,audit}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m1[0m:[93m72[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Priority'.
+apps/api build: [7m1[0m import { Controller, Post, UseGuards } from '@nestjs/common'; import { Priority, ProposalStatus, Role, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service';
+apps/api build: [7m [0m [91m                                                                       ~~~~~~~~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m1[0m:[93m82[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'ProposalStatus'.
+apps/api build: [7m1[0m import { Controller, Post, UseGuards } from '@nestjs/common'; import { Priority, ProposalStatus, Role, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service';
+apps/api build: [7m [0m [91m                                                                                 ~~~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m1[0m:[93m98[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Role'.
+apps/api build: [7m1[0m import { Controller, Post, UseGuards } from '@nestjs/common'; import { Priority, ProposalStatus, Role, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service';
+apps/api build: [7m [0m [91m                                                                                                 ~~~~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m1[0m:[93m104[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'TaskStatus'.
+apps/api build: [7m1[0m import { Controller, Post, UseGuards } from '@nestjs/common'; import { Priority, ProposalStatus, Role, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service';
+apps/api build: [7m [0m [91m                                                                                                       ~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m2[0m:[93m214[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('demo') export class DemoController{constructor(private db:PrismaService){} @Post('reset') async reset(@CurrentSession() s:Session){requirePermission(s,'admin'); await this.db.$transaction(async db=>{await db.processedWebhook.deleteMany();await db.auditEvent.deleteMany();await db.invoice.deleteMany();await db.task.deleteMany();await db.contract.deleteMany();await db.proposal.deleteMany();await db.customer.deleteMany();await db.user.deleteMany();await db.tenant.deleteMany();await db.tenant.createMany({data:[{id:'t1',name:'Nexus Tecnologia'},{id:'t2',name:'Acme Serviços'}]});await db.user.createMany({data:[{id:'u1',tenantId:'t1',name:'Ana Martins',email:'ana@nexus.local',role:Role.ADMIN},{id:'u2',tenantId:'t1',name:'Bruno Costa',email:'bruno@nexus.local',role:Role.GESTOR},{id:'u3',tenantId:'t1',name:'Carla Souza',email:'carla@nexus.local',role:Role.OPERADOR},{id:'u4',tenantId:'t1',name:'Diego Lima',email:'diego@nexus.local',role:Role.AUDITOR},{id:'u5',tenantId:'t2',name:'Eva Ramos',email:'eva@acme.local',role:Role.ADMIN},{id:'u6',tenantId:'t2',name:'Felipe Nunes',email:'felipe@acme.local',role:Role.GESTOR}]});await db.customer.createMany({data:[{id:'c1',tenantId:'t1',name:'Orbe Design',email:'contato@orbe.local',status:'ATIVO'},{id:'c2',tenantId:'t1',name:'Delta Works',email:'financeiro@delta.local',status:'ATIVO'},{id:'c3',tenantId:'t2',name:'Helix Comércio',email:'oi@helix.local',status:'ATIVO'}]});await db.proposal.createMany({data:[{id:'p1',tenantId:'t1',customerId:'c1',title:'Implantação CRM',value:18000,status:ProposalStatus.ENVIADA,missing:['prazo de entrega']},{id:'p2',tenantId:'t1',customerId:'c2',title:'Portal de atendimento',value:9500,status:ProposalStatus.RASCUNHO,missing:['condição de pagamento','escopo final']},{id:'p3',tenantId:'t2',customerId:'c3',title:'Automação comercial',value:12200,status:ProposalStatus.ACEITA,missing:[]}]});await db.task.create({data:{id:'tk1',tenantId:'t1',title:'Revisar proposta Orbe',owner:'Carla Souza',priority:Priority.ALTA,due:new Date('2026-08-12T12:00:00Z'),status:TaskStatus.EM_ANDAMENTO}})}); return {reset:true}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                     ~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/demo/demo.controller.ts[0m:[93m2[0m:[93m233[0m - [91merror[0m[90m TS7006: [0mParameter 'db' implicitly has an 'any' type.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('demo') export class DemoController{constructor(private db:PrismaService){} @Post('reset') async reset(@CurrentSession() s:Session){requirePermission(s,'admin'); await this.db.$transaction(async db=>{await db.processedWebhook.deleteMany();await db.auditEvent.deleteMany();await db.invoice.deleteMany();await db.task.deleteMany();await db.contract.deleteMany();await db.proposal.deleteMany();await db.customer.deleteMany();await db.user.deleteMany();await db.tenant.deleteMany();await db.tenant.createMany({data:[{id:'t1',name:'Nexus Tecnologia'},{id:'t2',name:'Acme Serviços'}]});await db.user.createMany({data:[{id:'u1',tenantId:'t1',name:'Ana Martins',email:'ana@nexus.local',role:Role.ADMIN},{id:'u2',tenantId:'t1',name:'Bruno Costa',email:'bruno@nexus.local',role:Role.GESTOR},{id:'u3',tenantId:'t1',name:'Carla Souza',email:'carla@nexus.local',role:Role.OPERADOR},{id:'u4',tenantId:'t1',name:'Diego Lima',email:'diego@nexus.local',role:Role.AUDITOR},{id:'u5',tenantId:'t2',name:'Eva Ramos',email:'eva@acme.local',role:Role.ADMIN},{id:'u6',tenantId:'t2',name:'Felipe Nunes',email:'felipe@acme.local',role:Role.GESTOR}]});await db.customer.createMany({data:[{id:'c1',tenantId:'t1',name:'Orbe Design',email:'contato@orbe.local',status:'ATIVO'},{id:'c2',tenantId:'t1',name:'Delta Works',email:'financeiro@delta.local',status:'ATIVO'},{id:'c3',tenantId:'t2',name:'Helix Comércio',email:'oi@helix.local',status:'ATIVO'}]});await db.proposal.createMany({data:[{id:'p1',tenantId:'t1',customerId:'c1',title:'Implantação CRM',value:18000,status:ProposalStatus.ENVIADA,missing:['prazo de entrega']},{id:'p2',tenantId:'t1',customerId:'c2',title:'Portal de atendimento',value:9500,status:ProposalStatus.RASCUNHO,missing:['condição de pagamento','escopo final']},{id:'p3',tenantId:'t2',customerId:'c3',title:'Automação comercial',value:12200,status:ProposalStatus.ACEITA,missing:[]}]});await db.task.create({data:{id:'tk1',tenantId:'t1',title:'Revisar proposta Orbe',owner:'Carla Souza',priority:Priority.ALTA,due:new Date('2026-08-12T12:00:00Z'),status:TaskStatus.EM_ANDAMENTO}})}); return {reset:true}}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                        ~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m1[0m:[93m90[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'InvoiceStatus'.
+apps/api build: [7m1[0m import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'; import { InvoiceStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; import { AuditWriter } from '../../common/audit.service';
+apps/api build: [7m [0m [91m                                                                                         ~~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m2[0m:[93m204[0m - [91merror[0m[90m TS2339: [0mProperty 'invoice' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('invoices') export class InvoicesController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.invoice.findMany({where:{tenantId:s.tenantId},include:{contract:true},orderBy:{createdAt:'desc'}})} @Post() async create(@CurrentSession() s:Session,@Body() b:{contractId:string;value:number}){requirePermission(s,'pay'); const c=await this.db.contract.findFirst({where:{id:b.contractId,tenantId:s.tenantId}}); if(!c) throw new Error('Contrato inválido'); const i=await this.db.invoice.create({data:{id:`INV-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,contractId:c.id,value:b.value,status:InvoiceStatus.ABERTO}}); await this.audit.write(s,'INVOICE_CREATED','INVOICE',i.id,`Contrato ${c.id}`); return i}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                           ~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m2[0m:[93m447[0m - [91merror[0m[90m TS2339: [0mProperty 'contract' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('invoices') export class InvoicesController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.invoice.findMany({where:{tenantId:s.tenantId},include:{contract:true},orderBy:{createdAt:'desc'}})} @Post() async create(@CurrentSession() s:Session,@Body() b:{contractId:string;value:number}){requirePermission(s,'pay'); const c=await this.db.contract.findFirst({where:{id:b.contractId,tenantId:s.tenantId}}); if(!c) throw new Error('Contrato inválido'); const i=await this.db.invoice.create({data:{id:`INV-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,contractId:c.id,value:b.value,status:InvoiceStatus.ABERTO}}); await this.audit.write(s,'INVOICE_CREATED','INVOICE',i.id,`Contrato ${c.id}`); return i}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m2[0m:[93m581[0m - [91merror[0m[90m TS2339: [0mProperty 'invoice' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('invoices') export class InvoicesController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.invoice.findMany({where:{tenantId:s.tenantId},include:{contract:true},orderBy:{createdAt:'desc'}})} @Post() async create(@CurrentSession() s:Session,@Body() b:{contractId:string;value:number}){requirePermission(s,'pay'); const c=await this.db.contract.findFirst({where:{id:b.contractId,tenantId:s.tenantId}}); if(!c) throw new Error('Contrato inválido'); const i=await this.db.invoice.create({data:{id:`INV-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,contractId:c.id,value:b.value,status:InvoiceStatus.ABERTO}}); await this.audit.write(s,'INVOICE_CREATED','INVOICE',i.id,`Contrato ${c.id}`); return i}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m3[0m:[93m223[0m - [91merror[0m[90m TS2339: [0mProperty 'invoice' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Post(':id/pay/:result') async pay(@CurrentSession() s:Session,@Param('id') id:string,@Param('result') result:'approved'|'declined',@Body() body:{webhookId?:string}){requirePermission(s,'pay'); const invoice=await this.db.invoice.findFirst({where:{id,tenantId:s.tenantId}}); if(!invoice) throw new Error('Cobrança inexistente'); let webhookId=body.webhookId; if(!webhookId){const gateway=await fetch(`${process.env.PAYMENT_MOCK_URL??'http://localhost:4010'}/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({invoiceId:id,result})}); if(!gateway.ok) throw new Error('Gateway mock indisponível'); const payload=await gateway.json() as {webhookId:string}; webhookId=payload.webhookId} const seen=await this.db.processedWebhook.findUnique({where:{id:webhookId}}); if(seen){await this.audit.write(s,'WEBHOOK_DUPLICATE_IGNORED','INVOICE',id,webhookId); return {...invoice,duplicate:true}} const status=result==='approved'?InvoiceStatus.PAGO:InvoiceStatus.RECUSADO; const updated=await this.db.$transaction(async tx=>{await tx.processedWebhook.create({data:{id:webhookId,invoiceId:id}}); return tx.invoice.update({where:{id},data:{status}})}); await this.audit.write(s,'PAYMENT_WEBHOOK_PROCESSED','INVOICE',id,`${invoice.status} → ${status}; ${webhookId}`); return updated}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                              ~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m3[0m:[93m748[0m - [91merror[0m[90m TS2339: [0mProperty 'processedWebhook' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Post(':id/pay/:result') async pay(@CurrentSession() s:Session,@Param('id') id:string,@Param('result') result:'approved'|'declined',@Body() body:{webhookId?:string}){requirePermission(s,'pay'); const invoice=await this.db.invoice.findFirst({where:{id,tenantId:s.tenantId}}); if(!invoice) throw new Error('Cobrança inexistente'); let webhookId=body.webhookId; if(!webhookId){const gateway=await fetch(`${process.env.PAYMENT_MOCK_URL??'http://localhost:4010'}/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({invoiceId:id,result})}); if(!gateway.ok) throw new Error('Gateway mock indisponível'); const payload=await gateway.json() as {webhookId:string}; webhookId=payload.webhookId} const seen=await this.db.processedWebhook.findUnique({where:{id:webhookId}}); if(seen){await this.audit.write(s,'WEBHOOK_DUPLICATE_IGNORED','INVOICE',id,webhookId); return {...invoice,duplicate:true}} const status=result==='approved'?InvoiceStatus.PAGO:InvoiceStatus.RECUSADO; const updated=await this.db.$transaction(async tx=>{await tx.processedWebhook.create({data:{id:webhookId,invoiceId:id}}); return tx.invoice.update({where:{id},data:{status}})}); await this.audit.write(s,'PAYMENT_WEBHOOK_PROCESSED','INVOICE',id,`${invoice.status} → ${status}; ${webhookId}`); return updated}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ~~~~~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m3[0m:[93m1028[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @Post(':id/pay/:result') async pay(@CurrentSession() s:Session,@Param('id') id:string,@Param('result') result:'approved'|'declined',@Body() body:{webhookId?:string}){requirePermission(s,'pay'); const invoice=await this.db.invoice.findFirst({where:{id,tenantId:s.tenantId}}); if(!invoice) throw new Error('Cobrança inexistente'); let webhookId=body.webhookId; if(!webhookId){const gateway=await fetch(`${process.env.PAYMENT_MOCK_URL??'http://localhost:4010'}/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({invoiceId:id,result})}); if(!gateway.ok) throw new Error('Gateway mock indisponível'); const payload=await gateway.json() as {webhookId:string}; webhookId=payload.webhookId} const seen=await this.db.processedWebhook.findUnique({where:{id:webhookId}}); if(seen){await this.audit.write(s,'WEBHOOK_DUPLICATE_IGNORED','INVOICE',id,webhookId); return {...invoice,duplicate:true}} const status=result==='approved'?InvoiceStatus.PAGO:InvoiceStatus.RECUSADO; const updated=await this.db.$transaction(async tx=>{await tx.processedWebhook.create({data:{id:webhookId,invoiceId:id}}); return tx.invoice.update({where:{id},data:{status}})}); await this.audit.write(s,'PAYMENT_WEBHOOK_PROCESSED','INVOICE',id,`${invoice.status} → ${status}; ${webhookId}`); return updated}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/invoices/invoices.controller.ts[0m:[93m3[0m:[93m1047[0m - [91merror[0m[90m TS7006: [0mParameter 'tx' implicitly has an 'any' type.
+apps/api build: [7m3[0m @Post(':id/pay/:result') async pay(@CurrentSession() s:Session,@Param('id') id:string,@Param('result') result:'approved'|'declined',@Body() body:{webhookId?:string}){requirePermission(s,'pay'); const invoice=await this.db.invoice.findFirst({where:{id,tenantId:s.tenantId}}); if(!invoice) throw new Error('Cobrança inexistente'); let webhookId=body.webhookId; if(!webhookId){const gateway=await fetch(`${process.env.PAYMENT_MOCK_URL??'http://localhost:4010'}/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({invoiceId:id,result})}); if(!gateway.ok) throw new Error('Gateway mock indisponível'); const payload=await gateway.json() as {webhookId:string}; webhookId=payload.webhookId} const seen=await this.db.processedWebhook.findUnique({where:{id:webhookId}}); if(seen){await this.audit.write(s,'WEBHOOK_DUPLICATE_IGNORED','INVOICE',id,webhookId); return {...invoice,duplicate:true}} const status=result==='approved'?InvoiceStatus.PAGO:InvoiceStatus.RECUSADO; const updated=await this.db.$transaction(async tx=>{await tx.processedWebhook.create({data:{id:webhookId,invoiceId:id}}); return tx.invoice.update({where:{id},data:{status}})}); await this.audit.write(s,'PAYMENT_WEBHOOK_PROCESSED','INVOICE',id,`${invoice.status} → ${status}; ${webhookId}`); return updated}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m1[0m:[93m118[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'ProposalStatus'.
+apps/api build: [7m1[0m import { BadRequestException, Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common'; import { ProposalStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; import { AuditWriter } from '../../common/audit.service';
+apps/api build: [7m [0m [91m                                                                                                                     ~~~~~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m3[0m:[93m206[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m3[0m @UseGuards(SessionGuard) @Controller('proposals') export class ProposalsController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.proposal.findMany({where:{tenantId:s.tenantId},include:{customer:true},orderBy:{createdAt:'desc'}})}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                             ~~~~~~~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m4[0m:[93m183[0m - [91merror[0m[90m TS2339: [0mProperty 'customer' does not exist on type 'PrismaService'.
+apps/api build: [7m4[0m @Post() async create(@CurrentSession() s:Session,@Body() b:{customerId:string;title:string;value:number;missing:string[]}){requirePermission(s,'write'); const customer=await this.db.customer.findFirst({where:{id:b.customerId,tenantId:s.tenantId}}); if(!customer) throw new BadRequestException('Cliente inválido para o tenant'); const p=await this.db.proposal.create({data:{id:`P-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:b.customerId,title:b.title,value:b.value,status:ProposalStatus.RASCUNHO,missing:b.missing??[]}}); await this.audit.write(s,'PROPOSAL_CREATED','PROPOSAL',p.id,p.title); return p}
+apps/api build: [7m [0m [91m                                                                                                                                                                                      ~~~~~~~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m4[0m:[93m351[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m4[0m @Post() async create(@CurrentSession() s:Session,@Body() b:{customerId:string;title:string;value:number;missing:string[]}){requirePermission(s,'write'); const customer=await this.db.customer.findFirst({where:{id:b.customerId,tenantId:s.tenantId}}); if(!customer) throw new BadRequestException('Cliente inválido para o tenant'); const p=await this.db.proposal.create({data:{id:`P-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,customerId:b.customerId,title:b.title,value:b.value,status:ProposalStatus.RASCUNHO,missing:b.missing??[]}}); await this.audit.write(s,'PROPOSAL_CREATED','PROPOSAL',p.id,p.title); return p}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m5[0m:[93m177[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m5[0m @Patch(':id/status') async transition(@CurrentSession() s:Session,@Param('id') id:string,@Body() b:{status:ProposalStatus}){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id,tenantId:s.tenantId}}); if(!p||!allowed[p.status].includes(b.status)) throw new BadRequestException('Transição inválida'); const next=await this.db.proposal.update({where:{id},data:{status:b.status}}); await this.audit.write(s,'PROPOSAL_STATE_CHANGED','PROPOSAL',id,`${p.status} → ${b.status}`); return next}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                ~~~~~~~~[0m
+apps/api build: [96msrc/modules/proposals/proposals.controller.ts[0m:[93m5[0m:[93m355[0m - [91merror[0m[90m TS2339: [0mProperty 'proposal' does not exist on type 'PrismaService'.
+apps/api build: [7m5[0m @Patch(':id/status') async transition(@CurrentSession() s:Session,@Param('id') id:string,@Body() b:{status:ProposalStatus}){requirePermission(s,'write'); const p=await this.db.proposal.findFirst({where:{id,tenantId:s.tenantId}}); if(!p||!allowed[p.status].includes(b.status)) throw new BadRequestException('Transição inválida'); const next=await this.db.proposal.update({where:{id},data:{status:b.status}}); await this.audit.write(s,'PROPOSAL_STATE_CHANGED','PROPOSAL',id,`${p.status} → ${b.status}`); return next}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                  ~~~~~~~~[0m
+apps/api build: [96msrc/modules/tasks/tasks.controller.ts[0m:[93m1[0m:[93m83[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'Priority'.
+apps/api build: [7m1[0m import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common'; import { Priority, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; import { AuditWriter } from '../../common/audit.service';
+apps/api build: [7m [0m [91m                                                                                  ~~~~~~~~[0m
+apps/api build: [96msrc/modules/tasks/tasks.controller.ts[0m:[93m1[0m:[93m93[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'TaskStatus'.
+apps/api build: [7m1[0m import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common'; import { Priority, TaskStatus } from '@prisma/client'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; import { AuditWriter } from '../../common/audit.service';
+apps/api build: [7m [0m [91m                                                                                            ~~~~~~~~~~[0m
+apps/api build: [96msrc/modules/tasks/tasks.controller.ts[0m:[93m2[0m:[93m198[0m - [91merror[0m[90m TS2339: [0mProperty 'task' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('tasks') export class TasksController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.task.findMany({where:{tenantId:s.tenantId},orderBy:[{status:'asc'},{due:'asc'}]})} @Post() async create(@CurrentSession() s:Session,@Body() b:{contractId?:string;title:string;owner:string;priority:Priority;due?:string}){if(!['ADMIN','GESTOR','OPERADOR'].includes(s.role)) requirePermission(s,'task'); const t=await this.db.task.create({data:{id:`TK-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,contractId:b.contractId||null,title:b.title,owner:b.owner,priority:b.priority??Priority.NORMAL,due:b.due?new Date(b.due):null,status:TaskStatus.ABERTA}}); await this.audit.write(s,'TASK_CREATED','TASK',t.id,t.title); return t}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                     ~~~~[0m
+apps/api build: [96msrc/modules/tasks/tasks.controller.ts[0m:[93m2[0m:[93m521[0m - [91merror[0m[90m TS2339: [0mProperty 'task' does not exist on type 'PrismaService'.
+apps/api build: [7m2[0m @UseGuards(SessionGuard) @Controller('tasks') export class TasksController{constructor(private db:PrismaService,private audit:AuditWriter){} @Get() list(@CurrentSession() s:Session){return this.db.task.findMany({where:{tenantId:s.tenantId},orderBy:[{status:'asc'},{due:'asc'}]})} @Post() async create(@CurrentSession() s:Session,@Body() b:{contractId?:string;title:string;owner:string;priority:Priority;due?:string}){if(!['ADMIN','GESTOR','OPERADOR'].includes(s.role)) requirePermission(s,'task'); const t=await this.db.task.create({data:{id:`TK-${crypto.randomUUID().slice(0,6).toUpperCase()}`,tenantId:s.tenantId,contractId:b.contractId||null,title:b.title,owner:b.owner,priority:b.priority??Priority.NORMAL,due:b.due?new Date(b.due):null,status:TaskStatus.ABERTA}}); await this.audit.write(s,'TASK_CREATED','TASK',t.id,t.title); return t}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ~~~~[0m
+apps/api build: [96msrc/modules/users/users.controller.ts[0m:[93m1[0m:[93m418[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+apps/api build: [7m1[0m import { Controller, Get, UseGuards } from '@nestjs/common'; import { CurrentSession, requirePermission, Session, SessionGuard } from '../../common/auth'; import { PrismaService } from '../../common/prisma.service'; @UseGuards(SessionGuard) @Controller('users') export class UsersController{constructor(private db:PrismaService){} @Get() list(@CurrentSession() s:Session){requirePermission(s,'admin'); return this.db.user.findMany({where:{tenantId:s.tenantId},select:{id:true,name:true,email:true,role:true,active:true}})}}
+apps/api build: [7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                 ~~~~[0m
+apps/api build: Found 53 error(s).
+apps/api build: Failed
+/home/runner/work/Nexusops/Nexusops/apps/api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @nexusops/api@1.0.0 build: `nest build`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.
+EXIT_BUILD=1
