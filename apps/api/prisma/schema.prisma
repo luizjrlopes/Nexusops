@@ -1,115 +1,162 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+generator client {
+  provider = "prisma-client-js"
+}
 
-enum Role { ADMIN GESTOR OPERADOR AUDITOR }
-enum ProposalStatus { RASCUNHO ENVIADA ACEITA CONVERTIDA }
-enum InvoiceStatus { ABERTO PAGO RECUSADO }
-enum TaskStatus { ABERTA EM_ANDAMENTO CONCLUIDA }
-enum Priority { BAIXA NORMAL ALTA }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  GESTOR
+  OPERADOR
+  AUDITOR
+}
+
+enum ProposalStatus {
+  RASCUNHO
+  ENVIADA
+  ACEITA
+  CONVERTIDA
+}
+
+enum InvoiceStatus {
+  ABERTO
+  PAGO
+  RECUSADO
+}
+
+enum TaskStatus {
+  ABERTA
+  EM_ANDAMENTO
+  CONCLUIDA
+}
+
+enum Priority {
+  BAIXA
+  NORMAL
+  ALTA
+}
 
 model Tenant {
-  id String @id
-  name String
-  users User[]
-  customers Customer[]
-  proposals Proposal[]
-  contracts Contract[]
-  tasks Task[]
-  invoices Invoice[]
+  id          String       @id
+  name        String
+  users       User[]
+  customers   Customer[]
+  proposals   Proposal[]
+  contracts   Contract[]
+  tasks       Task[]
+  invoices    Invoice[]
   auditEvents AuditEvent[]
 }
+
 model User {
-  id String @id
+  id       String  @id
   tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
-  name String
-  email String
-  role Role
-  active Boolean @default(true)
-  @@unique([tenantId,email])
+  tenant   Tenant  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  name     String
+  email    String
+  role     Role
+  active   Boolean @default(true)
+
+  @@unique([tenantId, email])
   @@index([tenantId])
 }
+
 model Customer {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
-  name String
-  email String
-  status String @default("ATIVO")
+  id        String     @id
+  tenantId  String
+  tenant    Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  name      String
+  email     String
+  status    String     @default("ATIVO")
   proposals Proposal[]
   contracts Contract[]
+
   @@index([tenantId])
 }
+
 model Proposal {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
+  id         String         @id
+  tenantId   String
+  tenant     Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   customerId String
-  customer Customer @relation(fields:[customerId], references:[id], onDelete:Restrict)
-  title String
-  value Decimal @db.Decimal(12,2)
-  status ProposalStatus @default(RASCUNHO)
-  missing String[]
-  contract Contract?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  @@index([tenantId,status])
+  customer   Customer       @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  title      String
+  value      Decimal        @db.Decimal(12, 2)
+  status     ProposalStatus @default(RASCUNHO)
+  missing    String[]
+  contract   Contract?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  @@index([tenantId, status])
 }
+
 model Contract {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
+  id         String    @id
+  tenantId   String
+  tenant     Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   customerId String
-  customer Customer @relation(fields:[customerId], references:[id], onDelete:Restrict)
-  proposalId String @unique
-  proposal Proposal @relation(fields:[proposalId], references:[id], onDelete:Restrict)
-  value Decimal @db.Decimal(12,2)
-  status String @default("ATIVO")
-  createdAt DateTime @default(now())
-  tasks Task[]
-  invoices Invoice[]
+  customer   Customer  @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  proposalId String    @unique
+  proposal   Proposal  @relation(fields: [proposalId], references: [id], onDelete: Restrict)
+  value      Decimal   @db.Decimal(12, 2)
+  status     String    @default("ATIVO")
+  createdAt  DateTime  @default(now())
+  tasks      Task[]
+  invoices   Invoice[]
+
   @@index([tenantId])
 }
+
 model Task {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
+  id         String     @id
+  tenantId   String
+  tenant     Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   contractId String?
-  contract Contract? @relation(fields:[contractId], references:[id], onDelete:SetNull)
-  title String
-  owner String
-  priority Priority @default(NORMAL)
-  due DateTime?
-  status TaskStatus @default(ABERTA)
-  createdAt DateTime @default(now())
-  @@index([tenantId,status])
+  contract   Contract?  @relation(fields: [contractId], references: [id], onDelete: SetNull)
+  title      String
+  owner      String
+  priority   Priority   @default(NORMAL)
+  due        DateTime?
+  status     TaskStatus @default(ABERTA)
+  createdAt  DateTime   @default(now())
+
+  @@index([tenantId, status])
 }
+
 model Invoice {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
+  id         String        @id
+  tenantId   String
+  tenant     Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   contractId String
-  contract Contract @relation(fields:[contractId], references:[id], onDelete:Restrict)
-  value Decimal @db.Decimal(12,2)
-  status InvoiceStatus @default(ABERTO)
-  createdAt DateTime @default(now())
-  @@index([tenantId,status])
+  contract   Contract      @relation(fields: [contractId], references: [id], onDelete: Restrict)
+  value      Decimal       @db.Decimal(12, 2)
+  status     InvoiceStatus @default(ABERTO)
+  createdAt  DateTime      @default(now())
+
+  @@index([tenantId, status])
 }
+
 model ProcessedWebhook {
-  id String @id
-  invoiceId String
+  id          String   @id
+  invoiceId   String
   processedAt DateTime @default(now())
 }
+
 model AuditEvent {
-  id String @id
-  tenantId String
-  tenant Tenant @relation(fields:[tenantId], references:[id], onDelete:Cascade)
-  at DateTime @default(now())
-  userName String
-  role Role
-  action String
+  id         String   @id
+  tenantId   String
+  tenant     Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  at         DateTime @default(now())
+  userName   String
+  role       Role
+  action     String
   entityType String
-  entityId String
-  details String
-  @@index([tenantId,at])
+  entityId   String
+  details    String
+
+  @@index([tenantId, at])
 }
