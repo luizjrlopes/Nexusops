@@ -27,8 +27,8 @@ jobs:
         run: |
           set +e
           {
-            echo '## pnpm install --no-frozen-lockfile'
-            pnpm install --no-frozen-lockfile
+            echo '## pnpm install --frozen-lockfile'
+            pnpm install --frozen-lockfile
             echo "EXIT_INSTALL=$?"
             echo
             echo '## pnpm validate:static'
@@ -48,14 +48,14 @@ jobs:
             echo "EXIT_BUILD=$?"
           } > ci-diagnostics.txt 2>&1
           cat ci-diagnostics.txt
-      - name: Commit lockfile and diagnostics
+      - name: Commit diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pnpm-lock.yaml ci-diagnostics.txt
+          git add ci-diagnostics.txt
           if git diff --cached --quiet; then
             echo "No diagnostics changes to commit."
             exit 0
           fi
-          git commit -m "ci: refresh lockfile and pipeline diagnostics"
+          git commit -m "ci: capture final pipeline diagnostics"
           git push
