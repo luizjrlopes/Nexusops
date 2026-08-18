@@ -1,26 +1,18 @@
-## pnpm install --no-frozen-lockfile
+## pnpm install --frozen-lockfile
 ! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-10.15.0.tgz
 Scope: all 6 workspace projects
+Lockfile is up to date, resolution step is skipped
 Progress: resolved 1, reused 0, downloaded 0, added 0
-Progress: resolved 20, reused 0, downloaded 20, added 0
-Progress: resolved 22, reused 0, downloaded 22, added 0
-Progress: resolved 102, reused 0, downloaded 93, added 0
-Progress: resolved 182, reused 0, downloaded 150, added 0
-Progress: resolved 283, reused 0, downloaded 253, added 0
-Progress: resolved 445, reused 0, downloaded 405, added 0
 Packages: +426
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Progress: resolved 503, reused 0, downloaded 427, added 425
-Progress: resolved 503, reused 0, downloaded 427, added 426, done
-apps/api postinstall$ prisma generate
-apps/api postinstall: Prisma schema loaded from prisma/schema.prisma
-apps/api postinstall: ✔ Generated Prisma Client (v6.19.3) to ./../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 104ms
-apps/api postinstall: Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
-apps/api postinstall: Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
-apps/api postinstall: Done
+Progress: resolved 426, reused 0, downloaded 150, added 130
+Progress: resolved 426, reused 0, downloaded 231, added 183
+Progress: resolved 426, reused 0, downloaded 422, added 422
+Progress: resolved 426, reused 0, downloaded 423, added 423
+Progress: resolved 426, reused 0, downloaded 426, added 426, done
 
 devDependencies:
-+ @eslint/js 9.39.5 (10.0.1 is available)
++ @eslint/js 9.39.5
 + @playwright/test 1.62.1
 + typescript 5.9.3
 + typescript-eslint 8.67.0
@@ -34,7 +26,13 @@ devDependencies:
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
-Done in 9.6s using pnpm v10.15.0
+apps/api postinstall$ prisma generate
+apps/api postinstall: Prisma schema loaded from prisma/schema.prisma
+apps/api postinstall: ✔ Generated Prisma Client (v6.19.3) to ./../../node_modules/.pnpm/@prisma+client@6.19.3_prisma@6.19.3_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 121ms
+apps/api postinstall: Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+apps/api postinstall: Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+apps/api postinstall: Done
+Done in 7.4s using pnpm v10.15.0
 EXIT_INSTALL=0
 
 ## pnpm validate:static
@@ -43,7 +41,7 @@ EXIT_INSTALL=0
 > python scripts/validate/static_validate.py
 
 STATIC_VALIDATION: PASS
-files=31632
+files=31592
 EXIT_STATIC=0
 
 ## pnpm lint
@@ -54,16 +52,9 @@ EXIT_STATIC=0
 Scope: 5 of 6 workspace projects
 apps/api lint$ eslint src test
 apps/web lint$ eslint .
-apps/web lint: /home/runner/work/Nexusops/Nexusops/apps/web/src/app/(app)/cobrancas/page.tsx
-apps/web lint:   3:869  error  Empty block statement  no-empty
-apps/web lint: ✖ 1 problem (1 error, 0 warnings)
 apps/api lint: Done
-apps/web lint: Failed
-/home/runner/work/Nexusops/Nexusops/apps/web:
- ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @nexusops/web@1.0.0 lint: `eslint .`
-Exit status 1
- ELIFECYCLE  Command failed with exit code 1.
-EXIT_LINT=1
+apps/web lint: Done
+EXIT_LINT=0
 
 ## pnpm test
 
@@ -75,20 +66,20 @@ apps/api test$ vitest run
 apps/web test$ vitest run
 apps/api test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/Nexusops/Nexusops/apps/api[39m
 apps/web test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/Nexusops/Nexusops/apps/web[39m
-apps/web test:  [32m✓[39m src/lib/permissions.spec.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 5[2mms[22m[39m
-apps/api test:  [32m✓[39m test/webhook-idempotency.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
-apps/api test:  [32m✓[39m test/proposal-state.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
-apps/api test:  [32m✓[39m test/rbac.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 8[2mms[22m[39m
+apps/api test:  [32m✓[39m test/rbac.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+apps/web test:  [32m✓[39m src/lib/permissions.spec.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+apps/api test:  [32m✓[39m test/webhook-idempotency.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+apps/api test:  [32m✓[39m test/proposal-state.spec.ts [2m([22m[2m1 test[22m[2m)[22m[32m 14[2mms[22m[39m
 apps/web test: [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 apps/web test: [2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
-apps/web test: [2m   Start at [22m 03:00:29
-apps/web test: [2m   Duration [22m 691ms[2m (transform 80ms, setup 0ms, collect 58ms, tests 5ms, environment 0ms, prepare 231ms)[22m
+apps/web test: [2m   Start at [22m 03:02:25
+apps/web test: [2m   Duration [22m 692ms[2m (transform 89ms, setup 0ms, collect 66ms, tests 7ms, environment 0ms, prepare 163ms)[22m
 apps/api test: [2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
 apps/api test: [2m      Tests [22m [1m[32m3 passed[39m[22m[90m (3)[39m
-apps/api test: [2m   Start at [22m 03:00:29
-apps/api test: [2m   Duration [22m 724ms[2m (transform 174ms, setup 0ms, collect 177ms, tests 19ms, environment 1ms, prepare 724ms)[22m
-apps/web test: Done
+apps/api test: [2m   Start at [22m 03:02:25
+apps/api test: [2m   Duration [22m 715ms[2m (transform 132ms, setup 0ms, collect 167ms, tests 22ms, environment 1ms, prepare 649ms)[22m
 apps/api test: Done
+apps/web test: Done
 EXIT_TEST=0
 
 ## pnpm build
@@ -107,7 +98,7 @@ apps/web build: https://nextjs.org/telemetry
 apps/web build:    ▲ Next.js 15.5.23
 apps/web build:    Creating an optimized production build ...
 apps/api build: Done
-apps/web build:  ✓ Compiled successfully in 6.3s
+apps/web build:  ✓ Compiled successfully in 5.6s
 apps/web build:    Linting and checking validity of types ...
 apps/web build:    We detected TypeScript in your project and reconfigured your tsconfig.json file for you. Strict-mode is set to false by default.
 apps/web build:    The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
@@ -117,13 +108,31 @@ apps/web build:    	- exclude was set to ['node_modules']
 apps/web build:    The following mandatory changes were made to your tsconfig.json:
 apps/web build:    	- isolatedModules was set to true (requirement for SWC / Babel)
 apps/web build:  ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
-apps/web build: Failed to compile.
-apps/web build: ./src/app/(app)/cobrancas/page.tsx
-apps/web build: 3:869  Error: Empty block statement.  no-empty
-apps/web build: info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
-apps/web build: Failed
-/home/runner/work/Nexusops/Nexusops/apps/web:
- ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @nexusops/web@1.0.0 build: `next build`
-Exit status 1
- ELIFECYCLE  Command failed with exit code 1.
-EXIT_BUILD=1
+apps/web build:    Collecting page data ...
+apps/web build:    Generating static pages (0/14) ...
+apps/web build:    Generating static pages (3/14) 
+apps/web build:    Generating static pages (6/14) 
+apps/web build:    Generating static pages (10/14) 
+apps/web build:  ✓ Generating static pages (14/14)
+apps/web build:    Finalizing page optimization ...
+apps/web build:    Collecting build traces ...
+apps/web build: Route (app)                                 Size  First Load JS
+apps/web build: ┌ ○ /                                      508 B         103 kB
+apps/web build: ├ ○ /_not-found                            996 B         103 kB
+apps/web build: ├ ○ /auditoria                           1.02 kB         103 kB
+apps/web build: ├ ○ /clientes                            1.79 kB         104 kB
+apps/web build: ├ ○ /cobrancas                           2.27 kB         105 kB
+apps/web build: ├ ○ /configuracoes                       1.21 kB         103 kB
+apps/web build: ├ ○ /contratos                           2.03 kB         104 kB
+apps/web build: ├ ○ /dashboard                           1.39 kB         104 kB
+apps/web build: ├ ○ /login                               1.41 kB         104 kB
+apps/web build: ├ ○ /propostas                           2.53 kB         105 kB
+apps/web build: ├ ○ /tarefas                             2.04 kB         104 kB
+apps/web build: └ ○ /usuarios                              971 B         103 kB
+apps/web build: + First Load JS shared by all             102 kB
+apps/web build:   ├ chunks/560-1dc3eec9f9591bf1.js       46.1 kB
+apps/web build:   ├ chunks/af3f158d-d4bc65261af235ea.js  54.2 kB
+apps/web build:   └ other shared chunks (total)          1.92 kB
+apps/web build: ○  (Static)  prerendered as static content
+apps/web build: Done
+EXIT_BUILD=0
