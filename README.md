@@ -1,59 +1,61 @@
 # NexusOps
 
-**NexusOps** é uma plataforma SaaS B2B multitenant para centralizar operações comerciais e administrativas em um único fluxo: clientes, propostas, contratos, tarefas, cobranças, auditoria e recursos assistidos por IA.
+[English](README.md) | [Português](README.pt-BR.md)
 
-O projeto foi estruturado como uma aplicação full stack moderna, com separação clara entre interface, API, persistência, integrações e infraestrutura. O ambiente local é autocontido e pode ser executado sem dependências externas pagas.
+**NexusOps** is a multi-tenant B2B SaaS platform that centralizes commercial and administrative operations into a single flow: customers, proposals, contracts, tasks, billing, auditing and AI-assisted capabilities.
 
-## Visão geral
+The project is structured as a modern full stack application with clear separation between interface, API, persistence, integrations and infrastructure. The local environment is self-contained and can run without paid external dependencies.
 
-O NexusOps conecta etapas que normalmente ficam distribuídas entre diferentes ferramentas e transforma essas informações em um fluxo operacional contínuo.
+## Overview
 
-Principais capacidades:
+NexusOps connects stages that are usually spread across different tools and turns them into a continuous operational workflow.
 
-- gestão de clientes;
-- criação e acompanhamento de propostas;
-- controle de estados e conversão de propostas em contratos;
-- gestão de contratos;
-- organização e acompanhamento de tarefas;
-- geração e acompanhamento de cobranças;
-- processamento idempotente de webhooks;
-- controle de acesso baseado em papéis;
-- isolamento de dados por tenant;
-- trilha de auditoria das ações do sistema;
-- integração com serviços de IA com fallback determinístico;
-- observabilidade e infraestrutura como código.
+Core capabilities include:
 
-## Arquitetura
+- customer management;
+- proposal creation and tracking;
+- proposal state management and conversion into contracts;
+- contract management;
+- task organization and tracking;
+- billing generation and tracking;
+- idempotent webhook processing;
+- role-based access control;
+- tenant-level data isolation;
+- system audit trail;
+- AI-service integration with deterministic fallback;
+- observability and infrastructure as code.
 
-O repositório utiliza uma organização **monorepo com pnpm workspaces**.
+## Architecture
+
+The repository uses a **monorepo organized with pnpm workspaces**.
 
 ```text
 NexusOps/
 ├── apps/
-│   ├── web/              # Aplicação web
-│   └── api/              # API e regras de negócio
-├── packages/             # Código compartilhado
-├── mocks/                # Serviços locais para integrações externas
+│   ├── web/              # Web application
+│   └── api/              # API and business rules
+├── packages/             # Shared code
+├── mocks/                # Local services for external integrations
 ├── infrastructure/       # Infrastructure as Code
-├── observability/        # Configuração de observabilidade
-├── docs/                 # Documentação técnica e de domínio
-├── scripts/              # Automação e validações
-└── tests/                # Testes de integração e E2E
+├── observability/        # Observability configuration
+├── docs/                 # Technical and domain documentation
+├── scripts/              # Automation and validation
+└── tests/                # Integration and E2E tests
 ```
 
-### Fluxo principal
+### Main flow
 
 ```text
 Web
   │
   ▼
-API NestJS
+NestJS API
   │
-  ├── Autenticação e autorização
-  ├── Regras de negócio
-  ├── Auditoria
-  ├── Integrações
-  └── IA
+  ├── Authentication and authorization
+  ├── Business rules
+  ├── Auditing
+  ├── Integrations
+  └── AI
   │
   ▼
 Prisma ORM
@@ -65,142 +67,92 @@ PostgreSQL
 ## Stack
 
 ### Frontend
-
 - Next.js
 - React
 - TypeScript
 
 ### Backend
-
 - Node.js
 - NestJS
 - TypeScript
 - Prisma ORM
-- API HTTP
+- HTTP API
 - JWT
 
-### Dados
-
+### Data
 - PostgreSQL
-- modelagem multitenant
-- seed automatizado para ambiente local
+- multi-tenant data modeling
+- automated local seed
 
-### Qualidade
-
+### Quality
 - Vitest
 - Playwright
 - ESLint
-- validação estática do repositório
+- static repository validation
 - GitHub Actions
 
-### Infraestrutura e operação
-
+### Infrastructure and operations
 - Docker
 - Docker Compose
 - Azure Bicep
 - OpenTelemetry
-- configuração de observabilidade
+- observability configuration
 
-## Multitenancy e segurança
+## Multi-tenancy and security
 
-O domínio foi modelado para operar com múltiplas organizações na mesma aplicação.
+The domain is modeled to support multiple organizations in the same application. Core business resources are associated with a `tenantId`, keeping customers, proposals, contracts, tasks, billing records, users and audit events scoped to the correct organization.
 
-Os principais recursos de negócio são associados a um `tenantId`, permitindo que clientes, propostas, contratos, tarefas, cobranças, usuários e eventos de auditoria permaneçam vinculados à organização correta.
+The application also implements role-based access control with profiles such as **ADMIN**, **GESTOR**, **OPERADOR** and **AUDITOR**. Permissions are enforced by the API according to the active session and requested operation.
 
-A aplicação também implementa controle de acesso por papéis, com perfis como:
-
-- **ADMIN**
-- **GESTOR**
-- **OPERADOR**
-- **AUDITOR**
-
-As permissões são verificadas na API de acordo com o contexto da sessão e a operação solicitada.
-
-## Domínio
-
-O fluxo principal do NexusOps é:
+## Domain flow
 
 ```text
-Cliente
+Customer
    ↓
-Proposta
+Proposal
    ↓
-Contrato
+Contract
    ↓
-Tarefas
+Tasks
    ↓
-Cobranças
+Billing
    ↓
-Indicadores e Auditoria
+Metrics and Audit
 ```
 
-Essa estrutura permite acompanhar o ciclo operacional desde a entrada de uma oportunidade até a execução e o controle financeiro associado ao contrato.
+This structure makes it possible to follow the operational lifecycle from opportunity intake through execution and financial control associated with the contract.
 
-## Inteligência Artificial
+## Artificial Intelligence
 
-O NexusOps possui uma camada de integração com IA desacoplada da regra principal da aplicação.
+NexusOps includes an AI-integration layer decoupled from the application's core business rules. In the local environment, a controllable provider makes it possible to validate both success and failure scenarios without relying on external services. Deterministic fallback keeps essential functions available when the AI provider is unavailable.
 
-No ambiente local, um provider controlável permite validar cenários de sucesso e falha sem depender de serviços externos. A aplicação mantém um fluxo determinístico de fallback para que indisponibilidade do provider não interrompa funções essenciais do sistema.
+## Integrations and idempotency
 
-## Integrações e idempotência
+The project includes a payment integration that can run locally. Webhook processing keeps track of already-processed events so the same notification is not applied more than once.
 
-O projeto inclui uma integração de pagamentos executável localmente.
+## Auditing
 
-O processamento de webhooks utiliza controle de eventos já processados, evitando que uma mesma notificação seja aplicada mais de uma vez.
+Relevant actions can generate audit events containing information such as tenant, user, role, action, affected entity, operation details and timestamp.
 
-Esse desenho permite exercitar comportamentos comuns de sistemas distribuídos sem depender de uma infraestrutura externa para desenvolvimento local.
+## Running locally
 
-## Auditoria
-
-Ações relevantes do sistema podem gerar eventos de auditoria contendo informações como:
-
-- tenant;
-- usuário;
-- papel do usuário;
-- ação realizada;
-- tipo da entidade;
-- entidade afetada;
-- detalhes da operação;
-- data e hora.
-
-Isso permite rastrear operações importantes e separar responsabilidades entre perfis operacionais e de auditoria.
-
-## Executando localmente
-
-### Pré-requisitos
-
+### Prerequisites
 - Docker
 - Docker Compose
 
-Clone o repositório e crie o arquivo de ambiente:
-
 ```bash
 cp .env.example .env
-```
-
-Suba os serviços:
-
-```bash
 docker compose up --build
 ```
 
-Aplicação web:
+- Web application: `http://localhost:3000`
+- API: `http://localhost:3001`
 
-```text
-http://localhost:3000
-```
+The local environment starts PostgreSQL and the services required to run the complete application flow.
 
-API:
+## Development without Docker
 
-```text
-http://localhost:3001
-```
-
-O ambiente local inicializa o PostgreSQL e os serviços necessários para executar o fluxo completo da aplicação.
-
-## Desenvolvimento sem Docker
-
-O projeto utiliza **pnpm 10**.
+The project uses **pnpm 10**.
 
 ```bash
 corepack enable
@@ -208,7 +160,7 @@ pnpm install
 pnpm dev
 ```
 
-Comandos disponíveis no workspace:
+Available commands:
 
 ```bash
 pnpm dev
@@ -222,49 +174,33 @@ pnpm db:seed
 pnpm validate:static
 ```
 
-## Validação
-
-Para executar a validação estrutural do projeto:
+## Validation
 
 ```bash
 python scripts/validate/static_validate.py
-```
-
-Para executar as verificações principais do monorepo:
-
-```bash
 pnpm lint
 pnpm test
 pnpm build
-```
-
-Para testes end-to-end:
-
-```bash
 pnpm test:e2e
 ```
 
 ## CI
 
-O repositório possui pipeline no GitHub Actions para executar verificações automáticas de qualidade durante pushes e pull requests.
+GitHub Actions runs automated quality checks on pushes and pull requests, including dependency installation, linting, tests and production builds.
 
-O pipeline instala as dependências do workspace e executa lint, testes e build da aplicação.
+## Engineering goals
 
-## Objetivos de engenharia
-
-O NexusOps foi estruturado em torno de alguns princípios:
-
-- **isolamento multitenant** como requisito de domínio;
-- **regras de negócio centralizadas na API**;
-- **integrações desacopladas** das funções essenciais;
-- **idempotência** em operações externas sensíveis;
-- **auditoria** como parte da arquitetura, não como recurso posterior;
-- **ambiente local reproduzível**;
-- **infraestrutura versionada como código**;
-- **testabilidade** das principais camadas;
-- **observabilidade** preparada desde a arquitetura;
-- **evolução incremental** sem acoplamento a fornecedores externos.
+- **multi-tenant isolation** as a domain requirement;
+- **business rules centralized in the API**;
+- **integrations decoupled** from essential functionality;
+- **idempotency** for sensitive external operations;
+- **auditing** as an architectural concern;
+- **reproducible local environment**;
+- **versioned infrastructure as code**;
+- **testability** across the main layers;
+- **observability** considered from the architecture stage;
+- **incremental evolution** without unnecessary provider lock-in.
 
 ---
 
-**NexusOps** — operações comerciais e administrativas conectadas em uma única plataforma.
+**NexusOps** — commercial and administrative operations connected in one platform.
